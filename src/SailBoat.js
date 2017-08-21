@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-import {API_URL} from './globalVars';
+//import {API_URL} from './globalVars';
 
 class SailBoat extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            sailBoat:{}
+            sailboat:{}
         };
     }
     componentDidMount () {
-        axios.get(`${API_URL}${this.props.match.url}`)
+        axios.get('http://localhost:8080/sailboats/1')
             .then((res) => {
                 this.setState({
-                    SailBoat: res.data.SailBoat
+                    sailboat: res.data
                 });
             })
             .catch((err) => {
@@ -26,24 +26,23 @@ class SailBoat extends Component {
             <div>
                 <header>
                     <p>
-                        {this.state.SailBoat.title}
+                        {this.state.sailboat.vesselName}
                     </p>
                 </header>
                 <div>
                     <div>
                         <div>
                             <figure>
-                            <img src={this.state.SailBoat.avatarUrl} alt={this.state.SailBoat.avatarUrl}/>
+                            <img src={this.state.sailboat.imgURL} alt={this.state.sailboat.imgURL}/>
                             </figure>
                         </div>
                         <div>
-                            <p>{this.state.SailBoat.author}</p>
-                            <p>{this.state.SailBoat.createdAt}</p>
-                            <p>{this.state.SailBoat.id}</p>
+                            <p>{this.state.sailboat.builder}</p>
+                            <p>{this.state.sailboat.lengthOverAll}</p>
+                            <p>{this.state.sailboat.boatId}</p>
+                            <p>{this.state.sailboat.vesselClass}</p>
+                            <p>{this.state.sailboat.construction}</p>
                         </div>
-                    </div>
-                    <div>
-                        <p>{this.state.SailBoat.body}</p>
                     </div>
                 </div>
             </div>
@@ -51,4 +50,5 @@ class SailBoat extends Component {
     }
 }
 
+// `${API_URL}${this.props.match.url}`
 export default SailBoat;

@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const SailBoatRow = (props) => {
     return (
         <tr>
-            <th><Link to={'/SailBoats/' + props.sailboat.boat_id}>{props.sailboat.vesselName}</Link></th>
+            <th><Link to={'/' + props.sailboat.boatId}>{props.sailboat.vesselName}</Link></th>
         </tr>
     );
 };

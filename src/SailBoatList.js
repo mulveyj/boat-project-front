@@ -16,9 +16,9 @@ class SailBoatList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.data.sailboats !== undefined
-                            ? this.props.data.sailboats.map((sailboat) => {
-                                return (<SailBoatRow   key={sailboat.boat_id} 
+                        {this.props.data !== undefined
+                            ? this.props.data.map((sailboat) => {
+                                return (<SailBoatRow   key={sailboat.boatId} 
                                                 sailboat={sailboat}/>);
                             })
                             : null}
@@ -30,7 +30,7 @@ class SailBoatList extends Component {
 }
 
 SailBoatList.propTypes = {
-    data: PropTypes.object.isRequired
+    data: PropTypes.array.isRequired
 };
 
 export default SailBoatList;
