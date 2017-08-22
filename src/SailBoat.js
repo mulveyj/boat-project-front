@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-//import {API_URL} from './globalVars';
+import {API_URL} from './globalVars';
 
 class SailBoat extends Component {
     constructor (props) {
@@ -11,7 +11,8 @@ class SailBoat extends Component {
         };
     }
     componentDidMount () {
-        axios.get('http://localhost:8080/sailboats/1')
+        console.log('Sailboat request made');
+        axios.get(`${API_URL}${this.props.match.url}`)
             .then((res) => {
                 this.setState({
                     sailboat: res.data
